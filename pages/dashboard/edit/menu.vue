@@ -1,10 +1,11 @@
 <template>
-  <div>
-    <h1>Hello World</h1>
+  <div class="menu">
+    Hello world
   </div>
 </template>
+
 <script>
 export default {
-  name: 'DashboardIndex'
+  name: 'MenuEdit'
 }
 </script>

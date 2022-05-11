@@ -8,13 +8,15 @@
         <form @submit.prevent="login">
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" class="form-control" id="username" v-model="username" placeholder="Username">
+            <input id="username" v-model="username" type="text" class="form-control" placeholder="Username">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" v-model="password" placeholder="Password">
+            <input id="password" v-model="password" type="password" class="form-control" placeholder="Password">
           </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <button type="submit" class="btn btn-primary">
+            Login
+          </button>
         </form>
       </div>
     </div>
