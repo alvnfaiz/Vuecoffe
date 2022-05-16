@@ -1,14 +1,14 @@
 <template>
-  <div class="login">
-    <div class="login-form">
-      <div class="login-logo">
-        <img src="assets/images/logo.png" alt="">
-      </div>
+  <div class="flex justify-center items-center h-screen">
+    <div class="max-w-md mx-auto border border-gray-100 rounded-xl p-10 shadow-xl">
+      <h1 class="text-4xl mb-6 text-center ">
+        Login
+      </h1>
       <div class="login-form-content">
         <form @submit.prevent="login">
           <div class="form-group">
-            <label for="username">Username</label>
-            <input id="username" v-model="username" type="text" class="form-control" placeholder="Username">
+            <label for="email">email</label>
+            <input id="email" v-model="email" type="text" class="form-control" placeholder="email">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -28,25 +28,31 @@ export default {
   name: 'LoginComponent',
   data () {
     return {
-      username: '',
+      email: '',
       password: ''
     }
   },
   methods: {
     login () {
-      axios.post('/api/login', {
-        username: this.username,
+      axios.post('https://laracoffe.herokuapp.com/api/login', {
+        email: this.email,
         password: this.password
-      }).then((response) => {
-        if (response.data.success) {
-          this.$router.push('/')
-        } else {
-          alert(response.data.message)
-        }
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error)
       })
+        .then((response) => {
+          if (response.status === 200) {
+            localStorage.setItem('access_token', response.data.access_token)
+            // eslint-disable-next-line no-console
+            console.log(response.data.access_token)
+            this.$router.push('/dashboard')
+          } else {
+            // eslint-disable-next-line no-console
+            console.log(response.data.message)
+          }
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.log(error)
+        })
     }
   }
 }
