@@ -5,7 +5,8 @@ const store = () => {
   return new Vuex.Store({
     state: {
       user: [],
-      accessToken: null
+      accessToken: null,
+      order: []
     },
     mutations: {
       setUser (state, user) {
@@ -13,6 +14,12 @@ const store = () => {
       },
       setAccessToken (state, accessToken) {
         state.accessToken = accessToken
+      },
+      setOrder (state, order) {
+        state.order = order
+      },
+      addOrder (state, order) {
+        state.order.push(order)
       }
     },
     actions: {

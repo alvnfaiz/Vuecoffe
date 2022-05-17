@@ -20,11 +20,14 @@ export default {
 
   // SSr false
   ssr: false,
-  target: 'server',
+  target: 'static',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [{
     src: '~/plugins/persistedState.js'
+  },
+  {
+    // src: '~/plugins/apolloClient.js'
   }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -44,7 +47,15 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa'
+    // '@nuxtjs/composition-api/module',
+    // '@nuxtjs/apollo'
   ],
+
+  // apollo: {
+  //   clientConfigs: {
+  //     default: '~/graphql'
+  //   }
+  // },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
@@ -58,7 +69,7 @@ export default {
       lang: 'en'
     }
   },
-
+  // serverMiddleware: [{ path: '/', handler: '~/server/index.js' }],
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     postcss: {
@@ -67,6 +78,11 @@ export default {
         autoprefixer: {}
       }
     },
+    // transpile: ['gsap', '@vue/apollo-composable']
     transpile: ['gsap']
-  }
+  },
+  // env: {
+  //   nuxtApiUrl: process.env.NUXT_API_URL 
+  // // the variable from the .env file, which must be in the root of the project
+  // }
 }
