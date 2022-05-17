@@ -5,6 +5,7 @@
 </template>
 <script>
 export default {
-  name: 'DashboardMenu'
+  name: 'DashboardMenu',
+  layout: 'dashboard'
 }
 </script>
