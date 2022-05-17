@@ -70,6 +70,7 @@ export default {
       this.$axios.get('/valid-token').then((response) => {
         if (response.data.status === true) {
           this.$router.push('/dashboard')
+          this.$store.state.role = this.$store.state.user.role
         } else {
           this.$store.dispatch('clear')
           // // eslint-disable-next-line no-console
@@ -90,7 +91,7 @@ export default {
             this.$store.commit('setAccessToken', response.data.access_token)
             this.message = response.data.message
             this.$store.commit('setUser', response.data.data)
-            // this.$router.push('/dashboard')
+            this.$router.push('/dashboard')
           } else {
             // eslint-disable-next-line no-console
             console.log(response.data.message)
