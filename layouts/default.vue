@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nav class="sticky top-0 z-40 w-full backdrop-blur-sm flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50 bg-white/80 supports-backdrop-blur:bg-white/70 dark:bg-transparent">
+    <nav class="sticky top-0 z-40 w-full backdrop-blur-sm flex-none transition-colors duration-500 lg:z-50 lg:border-b lg:border-slate-900/10 dark:border-slate-50 bg-white bg-opacity-50 supports-backdrop-blur:bg-white/70">
       <div class="max-w-8xl mx-auto">
         <div class="py-4 border-b border-slate-900/10 lg:px-8 lg:border-0 dark:border-slate-300/10 mx-4 lg:mx-0">
-          <div class="relative flex items-center">
-            <a class="mr-3 flex-none w-[2.0625rem] overflow-hidden md:w-auto" href="/">
+          <div class="relative flex items-center justify-between">
+            <a class="mr-3 flex-none overflow-hidden w-auto" href="/">
               <span class="font-bold text-xl text-sky-800">
                 Vue
               </span>
@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 a.nuxt-link-exact-active{
   @apply text-sky-800
 }

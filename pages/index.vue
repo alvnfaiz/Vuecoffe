@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-96">
+  <div class="w-full max-h-fit">
     <div id="hero" class="max-w-8xl mx-auto">
       <div class="flex flex-wrap">
         <div class="w-full self-center px-4 lg:w-1/2">

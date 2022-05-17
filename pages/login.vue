@@ -3,6 +3,7 @@
 </template>
 <script>
 export default {
-  name: 'LoginPage'
+  name: 'LoginPage',
+  layout: 'login'
 }
 </script>
