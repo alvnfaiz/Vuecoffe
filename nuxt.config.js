@@ -19,7 +19,7 @@ export default {
   ],
 
   // SSr false
-  // ssr: true,
+  ssr: false,
   target: 'static',
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
