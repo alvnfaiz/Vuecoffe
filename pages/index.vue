@@ -68,7 +68,7 @@
           Menu
         </h2>
         <div class="container mx-auto flex flex-wrap justify-between">
-          <MenuComponent v-for="item in 9" :key="item.id" :item="item" />
+          <MenuComponent v-for="item in menu" :key="item.id" :item="item" :menuid="item" />
         </div>
       </div>
       <!-- Menu Section End -->
@@ -94,6 +94,7 @@
 
 <script>
 import { gsap } from 'gsap'
+import axios from 'axios'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MenuComponent from '../components/MenuComponent.vue'
 export default {
@@ -101,51 +102,37 @@ export default {
   components: { MenuComponent },
   layout: 'default',
   data: () => ({
-    menu: [
-      {
-        id: 1,
-        title: 'Coffe',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
-        image: '~/assets/img/coffe.png',
-        price: 'Rp. 10.000',
-        category: 'coffe'
-      },
-      {
-        id: 2,
-        title: 'Coffe',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
-        image: '~/assets/img/coffe.png',
-        price: 'Rp. 10.000',
-        category: 'coffe'
-      },
-      {
-        id: 3,
-        title: 'Coffe',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
-        image: '~/assets/img/coffe.png',
-        price: 'Rp. 10.000',
-        category: 'coffe'
-      },
-      {
-        id: 4,
-        title: 'Coffe',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
-        image: '~/assets/img/coffe.png',
-        price: 'Rp. 10.000',
-        category: 'coffe'
-      },
-      {
-        id: 5,
-        title: 'Coffe',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quos, quisquam.',
-        image: '~/assets/img/coffe.png',
-        price: 'Rp. 10.000',
-        category: 'coffe'
-      }
-    ]
+    menu: []
   }),
-  mounted () {
+  async mounted () {
     this.init()
+    await axios({
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-hasura-admin-secret': 'V9yQv0wj8YGJM7GwIQE8XnGb2lwb5qPoYYkNfh4lR156O7aHDroowZ7X7feybJM6'
+      },
+      url: 'https://guided-treefrog-70.hasura.app/v1/graphql',
+      data: {
+        query: `
+            query MyQuery {
+            menu {
+              description
+              id
+              image
+              name
+              price
+              stock
+              category {
+                name
+              }
+            }
+          }
+          `
+      }
+    }).then((response) => {
+      this.menu = response.data.data.menu
+    })
   },
   methods: {
     init () {
